@@ -1,147 +1,31 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import Hero3DShape from "./Hero3DShape";
+import Floating3D from "./Floating3D";
 import MagneticButton from "./MagneticButton";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-  const [frameIndex, setFrameIndex] = useState(0);
-  const [isSequenceActive, setIsSequenceActive] = useState(!prefersReducedMotion);
-  const frameCount = 147;
-  const animationCompleteRef = useRef(Boolean(prefersReducedMotion));
-  const animationProgressRef = useRef(0);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const smoothScrollProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 22,
-    mass: 0.5,
-  });
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      setFrameIndex(0);
-      setIsSequenceActive(false);
-      document.body.style.overflow = "";
-      return;
-    }
-
-    const previousOverflow = document.body.style.overflow;
-    let touchStartY = 0;
-
-    document.body.style.overflow = "hidden";
-
-    const releaseScroll = (scrollDelta: number, direction: "down" | "up") => {
-      animationCompleteRef.current = direction === "down";
-      setIsSequenceActive(direction === "up");
-      document.body.style.overflow = direction === "down" ? previousOverflow : "hidden";
-      window.scrollBy({ top: scrollDelta, behavior: "auto" });
-    };
-
-    const updateAnimation = (distance: number) => {
-      animationProgressRef.current = Math.min(
-        1,
-        Math.max(0, animationProgressRef.current + distance / 4200),
-      );
-      setFrameIndex(Math.floor(animationProgressRef.current * (frameCount - 1)));
-      return animationProgressRef.current;
-    };
-
-    const handleWheel = (event: WheelEvent) => {
-      const isReversingAtTop = animationCompleteRef.current && event.deltaY < 0 && window.scrollY <= 0;
-      if (!animationCompleteRef.current || isReversingAtTop) {
-        event.preventDefault();
-        if (isReversingAtTop) setIsSequenceActive(true);
-        const progress = updateAnimation(event.deltaY);
-
-        if (progress >= 1) {
-          releaseScroll(event.deltaY, "down");
-        } else if (progress <= 0) {
-          releaseScroll(event.deltaY, "up");
-        }
-      }
-    };
-
-    const handleTouchStart = (event: TouchEvent) => {
-      if (!animationCompleteRef.current) {
-        touchStartY = event.touches[0].clientY;
-      }
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      if (!animationCompleteRef.current || window.scrollY <= 0) event.preventDefault();
-    };
-
-    const handleTouchEnd = (event: TouchEvent) => {
-      const touchEndY = event.changedTouches[0].clientY;
-      const swipeDistance = touchStartY - touchEndY;
-      const isReversingAtTop = animationCompleteRef.current && swipeDistance < 0 && window.scrollY <= 0;
-
-      if (!animationCompleteRef.current || isReversingAtTop) {
-        if (isReversingAtTop) setIsSequenceActive(true);
-        const progress = updateAnimation(swipeDistance * 2);
-
-        if (progress >= 1) {
-          releaseScroll(swipeDistance, "down");
-        } else if (progress <= 0) {
-          releaseScroll(swipeDistance, "up");
-        }
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [frameCount, prefersReducedMotion]);
-
-  const visualY = useTransform(smoothScrollProgress, [0, 1], [0, 110]);
-  const visualScale = useTransform(smoothScrollProgress, [0, 1], [1, 1.08]);
-  const visualRotateX = useTransform(smoothScrollProgress, [0, 1], [0, 8]);
-  const visualRotateY = useTransform(smoothScrollProgress, [0, 1], [-12, 10]);
-  const visualX = useTransform(smoothScrollProgress, [0, 1], [0, -18]);
-  const glowOneY = useTransform(smoothScrollProgress, [0, 1], [0, 60]);
-  const glowTwoY = useTransform(smoothScrollProgress, [0, 1], [0, -40]);
-  const glowThreeY = useTransform(smoothScrollProgress, [0, 1], [0, 80]);
-
-  const activeFrame = `/home_page_animation/ezgif-frame-${String(frameIndex + 1).padStart(3, "0")}.jpg`;
-
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[128px]"
           animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          style={prefersReducedMotion ? undefined : { y: glowOneY }}
         />
         <motion.div 
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px]"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          style={prefersReducedMotion ? undefined : { y: glowTwoY }}
         />
         <motion.div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"
           animate={{ scale: [1, 1.3, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          style={prefersReducedMotion ? undefined : { y: glowThreeY }}
         />
       </div>
 
@@ -219,33 +103,16 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Sequence Visual */}
+          {/* Right - 3D Visual */}
           <motion.div 
-            className={isSequenceActive
-              ? "fixed inset-0 z-50 flex items-center justify-center bg-background"
-              : "hidden lg:flex items-center justify-center"}
+            className="hidden lg:flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            style={prefersReducedMotion ? undefined : {
-              y: visualY,
-              x: visualX,
-              scale: visualScale,
-              rotateX: visualRotateX,
-              rotateY: visualRotateY,
-              transformPerspective: 1400,
-            }}
           >
-            <div className={isSequenceActive
-              ? "relative w-screen h-[100dvh] flex items-center justify-center"
-              : "relative w-[520px] h-[520px] flex items-center justify-center"}
-            >
-              <img
-                src={activeFrame}
-                alt="Sumix Developers sequence animation"
-                className="w-full h-full object-contain select-none pointer-events-none"
-              />
-            </div>
+            <Floating3D speed={0.8} amplitude={12}>
+              <Hero3DShape />
+            </Floating3D>
           </motion.div>
         </div>
 
