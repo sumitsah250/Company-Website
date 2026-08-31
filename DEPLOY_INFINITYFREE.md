@@ -143,9 +143,11 @@ Visit your domain and verify:
 ### Contact form doesn't submit
 **Cause:** Static sites can't process form submissions without a backend.  
 **Fix:** The form is frontend-only. To make it work:
-- Use Formspree (free): https://formspree.io — replace the form action
+- Use Formspree (free): https://formspree.io — create a form whose recipient is `sumixdevelopers@gmail.com`, then set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to its endpoint before running `npm run build`
 - Use Netlify Forms (if you switch to Netlify hosting)
 - Use InfinityFree's PHP mail function (requires backend code)
+
+The current `/api/contact` route only works on a Node.js host such as Vercel. InfinityFree serves the generated `dist/` files and cannot execute that route.
 
 ### Images not showing
 **Cause:** Next.js Image component requires optimization.  

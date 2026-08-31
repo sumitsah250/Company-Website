@@ -2,148 +2,130 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
 import Hero3DShape from "./Hero3DShape";
 import Floating3D from "./Floating3D";
-import MagneticButton from "./MagneticButton";
 
-export default function Hero() {
+type HeroProps = {
+  featuredProject?: {
+    title?: string;
+    description?: string;
+    image?: string;
+  };
+};
+
+export default function Hero({ featuredProject }: HeroProps = {}) {
+  void featuredProject;
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[128px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px]"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"
-          animate={{ scale: [1, 1.3, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Grid Pattern */}
+    <section className="relative h-[100vh] min-h-[720px] overflow-hidden bg-[#030303] text-[#f5f1ea] pt-20">
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)`,
-          backgroundSize: "80px 80px",
+          background:
+            "radial-gradient(circle at 68% 24%, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.02) 14%, transparent 34%), radial-gradient(circle at 52% 104%, rgba(255,255,255,0.04) 0%, transparent 30%)",
         }}
       />
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)",
+          backgroundSize: "84px 84px",
+        }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-[54%] top-[20%] h-[26rem] w-[26rem] rounded-full bg-white/[0.04] blur-[110px]"
+        animate={{ opacity: [0.45, 0.75, 0.45], scale: [0.98, 1.12, 0.98] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#080808] to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <motion.div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-elevated border border-border/50 mb-8 glow-subtle"
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+      <div className="relative z-10 mx-auto flex h-[calc(100vh-80px)] max-w-[1500px] items-center px-4 pb-8 sm:px-6 lg:px-10">
+        <div className="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 42 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="pt-8 lg:pt-0 lg:-translate-y-[1%] lg:translate-x-[2%]"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-6 text-[10px] font-medium uppercase tracking-[0.38em] text-[#d9d5cf]/70"
             >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted">Software + AI + Digital Products</span>
+              SUMIX DEVELOPERS / DIGITAL STUDIO
             </motion.div>
 
-            {/* Headline */}
-            <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-6"
-              initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+            <motion.h1
+              initial={{ opacity: 0, y: 56, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-[760px] font-medium uppercase leading-[0.78] tracking-[-0.08em] text-[#f5f1ea]"
+              style={{ fontSize: "clamp(3.4rem, 7vw, 11rem)" }}
             >
-              We Build Digital
-              <br />
-              <span className="text-gradient">Products That Move Businesses Forward.</span>
+              <span className="block">WE BUILD</span>
+              <span className="block text-[#f5f1ea]/95">WHAT&apos;S NEXT.</span>
             </motion.h1>
 
-            {/* Subheadline */}
-            <motion.p 
-              className="text-lg sm:text-xl text-muted leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 max-w-[560px] text-[0.72rem] font-medium uppercase tracking-[0.2em] text-[#d6d1ca]/65 sm:text-[0.8rem]"
             >
-              From custom software and mobile applications to intelligent AI systems and scalable web platforms — we engineer solutions that drive growth and deliver measurable impact.
+              Digital products, intelligent systems & experiences.
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div 
-              className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, delay: 0.52, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8"
             >
-              <MagneticButton strength={0.2}>
-                <Link
-                  href="/contact"
-                  className="group relative flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-background font-semibold overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02]"
-                >
-                  <span className="relative z-10">Start a Project</span>
-                  <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity" />
-                </Link>
-              </MagneticButton>
-              <MagneticButton strength={0.15}>
-                <Link
-                  href="/projects"
-                  className="flex items-center gap-2 px-8 py-4 rounded-xl border border-border/50 text-white font-semibold hover:bg-surface-elevated hover:border-primary/30 transition-all duration-300"
-                >
-                  View Our Work
-                </Link>
-              </MagneticButton>
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.38em] text-[#f3efe8]/90 transition-colors hover:text-white"
+              >
+                <span>VIEW OUR WORK</span>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/[0.02] text-base text-[#f5f1ea] transition-transform duration-300 group-hover:translate-x-1 group-hover:border-white/25">
+                  →
+                </span>
+              </Link>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Right - 3D Visual */}
-          <motion.div 
-            className="hidden lg:flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+            transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1], repeat: Infinity, repeatType: "mirror", repeatDelay: 0.5 }}
+            className="relative flex items-end justify-center"
           >
-            <Floating3D speed={0.8} amplitude={12}>
+            <div className="absolute inset-x-[12%] bottom-[8%] h-[34%] rounded-full bg-[#f1efe9]/6 blur-[92px]" />
+            <Floating3D speed={0.9} amplitude={16} className="relative z-10">
               <Hero3DShape />
             </Floating3D>
           </motion.div>
         </div>
-
-        {/* Bottom stats */}
-        <motion.div 
-          className="mt-20 pt-12 border-t border-border/20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Software Engineering", desc: "Custom solutions" },
-              { label: "AI & Automation", desc: "Intelligent systems" },
-              { label: "Digital Experiences", desc: "User-first design" },
-              { label: "Cloud & Infrastructure", desc: "Scalable hosting" },
-            ].map((item, i) => (
-              <motion.div 
-                key={item.label} 
-                className="text-center group"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 1.1 + i * 0.1 }}
-              >
-                <div className="text-sm font-semibold text-white mb-1 group-hover:text-primary transition-colors">{item.label}</div>
-                <div className="text-xs text-subtle">{item.desc}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute bottom-4 right-4 z-20 flex items-center gap-3 sm:right-8 sm:bottom-6"
+      >
+        <span className="text-[10px] font-medium uppercase tracking-[0.38em] text-[#d9d5cf]/70">
+          SCROLL TO EXPLORE
+        </span>
+        <div className="relative h-px w-14 overflow-hidden bg-white/10">
+          <motion.div
+            className="absolute left-0 top-0 h-full w-full origin-left bg-[#f5f1ea]/80"
+            animate={{ scaleX: [0, 1, 0], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -40,18 +40,18 @@ export default function HexGrid3D() {
         {hexagons.map((hex, i) => (
           <div
             key={i}
-            className="absolute w-16 h-16 border border-primary/20"
+            className="absolute w-16 h-16 border border-white/10"
             style={{
               left: "50%",
               top: "50%",
               transform: `translate(-50%, -50%) translate(${hex.x * 70}px, ${hex.y * 70}px)`,
               clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-              background: i === 0 ? "rgba(99, 102, 241, 0.1)" : "transparent",
+              background: i === 0 ? "rgba(255, 255, 255, 0.05)" : "transparent",
             }}
           />
         ))}
         {/* Center glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-primary/10 blur-xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/[0.03] blur-xl" />
       </div>
     </div>
   );

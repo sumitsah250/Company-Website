@@ -21,6 +21,8 @@ const budgets = [
   "$50,000 - $100,000", "$100,000+", "Not sure yet",
 ];
 
+const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState("");
@@ -37,7 +39,7 @@ export default function ContactPage() {
     setFormError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(formspreeEndpoint || "/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,9 +47,13 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
       if (!response.ok) {
         throw new Error(result.error || "Unable to send message");
+      }
+
+      if (formspreeEndpoint && result.ok === false) {
+        throw new Error("Unable to send message");
       }
 
       setSubmitted(true);
@@ -66,11 +72,11 @@ export default function ContactPage() {
       <Navbar />
 
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-28 relative">
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[150px]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Contact</span>
+              <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Contact</span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
                 Let us Start a<span className="text-gradient"> Conversation</span>
               </h1>
@@ -89,7 +95,7 @@ export default function ContactPage() {
 
       <MouseSpotlight>
         <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
               <div className="lg:col-span-2">
@@ -100,8 +106,8 @@ export default function ContactPage() {
 
                 <div className="space-y-6">
                   <a href="mailto:sumixdevelopers@gmail.com" className="flex items-start gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center flex-shrink-0 group-hover:from-primary/25 group-hover:to-secondary/25 transition-all">
-                      <Mail className="w-5 h-5 text-primary" />
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center flex-shrink-0 group-hover:bg-white/[0.06] transition-all">
+                      <Mail className="w-5 h-5 text-white/70" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold mb-1">Email</h3>
@@ -110,8 +116,8 @@ export default function ContactPage() {
                   </a>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-white/70" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold mb-1">Location</h3>
@@ -120,8 +126,8 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-white/70" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold mb-1">Response Time</h3>
@@ -132,7 +138,7 @@ export default function ContactPage() {
               </div>
 
               <div className="lg:col-span-3">
-                <div className="p-8 rounded-2xl bg-background border border-border/40 glow-subtle hover:border-primary/30 transition-colors duration-300">
+                <div className="p-8 rounded-2xl bg-background border border-border/40 glow-subtle hover:border-white/20 transition-colors duration-300">
                     {submitted ? (
                       <div className="text-center py-12">
                         <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
@@ -152,13 +158,13 @@ export default function ContactPage() {
                           <div>
                             <label htmlFor="name" className="block text-sm font-medium mb-2">Name *</label>
                             <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
-                              className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                              className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
                               placeholder="Your full name" />
                           </div>
                           <div>
                             <label htmlFor="email" className="block text-sm font-medium mb-2">Email *</label>
                             <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
-                              className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                              className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
                               placeholder="you@company.com" />
                           </div>
                         </div>
@@ -166,7 +172,7 @@ export default function ContactPage() {
                         <div>
                           <label htmlFor="company" className="block text-sm font-medium mb-2">Company</label>
                           <input type="text" id="company" name="company" value={formData.company} onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                            className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
                             placeholder="Your company name" />
                         </div>
 
@@ -192,12 +198,12 @@ export default function ContactPage() {
                         <div>
                           <label htmlFor="message" className="block text-sm font-medium mb-2">Message *</label>
                           <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none"
+                              className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-border/50 text-white placeholder:text-subtle/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all resize-none"
                             placeholder="Tell us about your project, goals, and timeline..." />
                         </div>
 
                         <button type="submit"
-                          className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-background font-semibold overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02]">
+                          className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-background font-semibold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:scale-[1.02]">
                           <span className="relative z-10">Send Message</span>
                           <Send className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
@@ -213,7 +219,7 @@ export default function ContactPage() {
       <section className="py-24 sm:py-32 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">FAQ</span>
+            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">FAQ</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Common Questions</h2>
             <p className="text-muted">Quick answers to questions we often receive.</p>
           </div>

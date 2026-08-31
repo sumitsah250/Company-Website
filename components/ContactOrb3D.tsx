@@ -36,10 +36,10 @@ export default function ContactOrb3D() {
         {[0, 30, 60, 90, 120, 150].map((deg, i) => (
           <div
             key={i}
-            className="absolute inset-0 rounded-full border border-primary/20"
+            className="absolute inset-0 rounded-full border border-white/10"
             style={{
               transform: `rotateY(${deg}deg)`,
-              boxShadow: i === 0 ? "0 0 30px -5px rgba(99, 102, 241, 0.2)" : "none",
+              boxShadow: i === 0 ? "0 0 30px -5px rgba(255, 255, 255, 0.08)" : "none",
             }}
           />
         ))}
@@ -48,13 +48,13 @@ export default function ContactOrb3D() {
         {[0, 45, -45].map((deg, i) => (
           <div
             key={`h-${i}`}
-            className="absolute inset-0 rounded-full border border-secondary/15"
+            className="absolute inset-0 rounded-full border border-white/10"
             style={{ transform: `rotateX(${deg}deg)` }}
           />
         ))}
 
         {/* Center core */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary/40 to-secondary/40 blur-md animate-pulse-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-white/[0.08] to-white/[0.04] blur-md animate-pulse-glow" />
 
         {/* Floating dots on surface */}
         {[...Array(12)].map((_, i) => {
@@ -65,7 +65,7 @@ export default function ContactOrb3D() {
           return (
             <div
               key={`dot-${i}`}
-              className="absolute w-1.5 h-1.5 rounded-full bg-primary/70"
+              className="absolute w-1.5 h-1.5 rounded-full bg-white/50"
               style={{
                 left: `${x}%`,
                 top: `${y}%`,

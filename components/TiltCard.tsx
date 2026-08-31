@@ -58,7 +58,7 @@ export default function TiltCard({ children, className = "", intensity = 15 }: T
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
             opacity: isHovered ? 1 : 0,
-            background: `radial-gradient(400px circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(99, 102, 241, 0.12), transparent 60%)`,
+            background: `radial-gradient(400px circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(255, 255, 255, 0.05), transparent 60%)`,
             zIndex: 0,
             transition: "opacity 0.3s ease",
           }}

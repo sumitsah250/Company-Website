@@ -37,12 +37,14 @@ const services = [
 ];
 
 const projects = [
-  { title: "Enterprise SaaS Platform", category: "Software", description: "A comprehensive business management platform with real-time analytics, team collaboration, and automated reporting.", tags: ["React", "Node.js", "PostgreSQL"], color: "bg-gradient-to-br from-indigo-950/90 via-blue-950/80 to-slate-950/90" },
-  { title: "AI-Powered Analytics Dashboard", category: "AI / ML", description: "Intelligent data visualization platform with predictive insights and natural language query capabilities.", tags: ["Python", "TensorFlow", "D3.js"], color: "bg-gradient-to-br from-violet-950/90 via-purple-950/80 to-slate-950/90" },
-  { title: "E-Commerce Mobile App", category: "Mobile", description: "Feature-rich shopping experience with personalized recommendations, secure payments, and real-time inventory.", tags: ["React Native", "Firebase", "Stripe"], color: "bg-gradient-to-br from-emerald-950/90 via-teal-950/80 to-slate-950/90" },
-  { title: "Healthcare Management System", category: "Web Platform", description: "Secure patient management, appointment scheduling, and electronic health records with HIPAA compliance.", tags: ["Next.js", "TypeScript", "AWS"], color: "bg-gradient-to-br from-cyan-950/90 via-sky-950/80 to-slate-950/90" },
-  { title: "Fintech Payment Gateway", category: "Software", description: "Secure payment processing infrastructure with multi-currency support, fraud detection, and instant settlements.", tags: ["Go", "Redis", "Kubernetes"], color: "bg-gradient-to-br from-amber-950/90 via-orange-950/80 to-slate-950/90" },
-  { title: "Smart IoT Dashboard", category: "IoT / AI", description: "Real-time device monitoring, predictive maintenance alerts, and energy optimization for industrial operations.", tags: ["MQTT", "React", "InfluxDB"], color: "bg-gradient-to-br from-rose-950/90 via-red-950/80 to-slate-950/90" },
+  { title: "SEE All Books & Guides 2081", description: "A comprehensive study app for Class 10 students, providing essential resources and guides. Features intuitive UI design, powerful search functionality, and efficient data handling.", image: "/images/seeguideapp.png", category: "Android", tags: ["Java", "Firebase", "Android Studio", "Material Design"], stats: ["5K+ Active Users", "15K+ Downloads"], links: { playStore: "https://play.google.com/store/apps/details?id=com.boss.class10allguidemanual2081" } },
+  { title: "Pustak Bazzar", description: "An innovative book resale application featuring comprehensive user profiles, advanced filtering options, and a robust admin panel for seamless management.", image: "/images/pustakbazzar.png", category: "Android", tags: ["Java", "Android Studio", "Firebase Auth", "Firestore", "MVVM"], highlights: ["MVVM Architecture Implementation", "Advanced Admin Panel", "Real-time Data Synchronization"], links: { playStore: "https://play.google.com/store/apps/details?id=com.boss.pustakbazzar" } },
+  { title: "Paisa Expense Manager", description: "A smart expense manager app designed to track daily expenses, categorize spending, and provide insightful analytics for better financial management.", image: "/images/paisa.png", category: "Android", tags: ["Java", "Android Studio", "Realm", "Google Drive Backup"], highlights: ["Simple & Intuitive UI", "Realm Database Integration", "Google Drive Backup & Restore"], links: { playStore: "https://play.google.com/store/apps/details?id=com.paisa.expense_manager" } },
+  { title: "Kuraakaani", description: "A modern chatting application designed for fast, secure, and real-time messaging with a clean UI and seamless user experience.", image: "/images/kurakani.png", category: "Android", tags: ["Java", "Android Studio", "Firebase Auth", "Firestore", "Glide"], highlights: ["Real-time Messaging", "User Authentication & Profiles", "Media Sharing Support"], links: { github: "https://github.com/sumitsah250/android-files/tree/master/KuraaKaani" } },
+  { title: "Sign Language Detection ML Model", description: "A deep learning-based model for recognizing and translating sign language gestures into text in real-time, improving accessibility and communication.", image: "/images/Sign_language_detection.png", category: "ML/AI", tags: ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy"], highlights: ["Real-time Gesture Recognition", "Custom CNN/LSTM Architecture", "Improves Accessibility"], links: { github: "https://github.com/sumitsah250/sign-language" } },
+  { title: "Forest Fire Detection System", description: "An IoT-powered system designed to detect forest fires at an early stage using sensors and real-time monitoring, helping prevent large-scale environmental damage.", image: "/images/Wild_fire_detection.png", category: "ML/AI", tags: ["Arduino", "ESP32", "IoT Sensors", "Firebase", "Android App"], highlights: ["Early Fire Detection with Sensors", "Real-time Alerts & Monitoring", "Mobile App Integration"], links: { github: "https://github.com/sumitsah250/OSMHackFest2024" } },
+  { title: "Dishcovery - AI Recipe Recommendation System", description: "An intelligent recipe recommendation platform that uses YOLOv8 object detection and speech recognition to identify available ingredients and suggest personalized recipes.", image: "/images/dishcovery.jpg", category: "ML/AI", tags: ["Python", "YOLOv8", "FastAPI", "Whisper", "PyTorch", "OpenCV", "HTML", "CSS", "JavaScript"], highlights: ["YOLOv8 Ingredient Detection", "Voice-to-Recipe Recommendation", "Real-time AI-Powered Suggestions"], links: { github: "https://github.com/sumitsah250/Dishcovery" } },
+  { id: 101, title: "MeaningBy.com", company: "Freelance Client", category: "Freelance", duration: "2025 – Present", description: "Developed and deployed a live educational platform focused on dictionary, translations, and writing resources. Handled full-cycle development including design, backend integration, and deployment.", image: "/images/meaningby.png", tags: ["React", "Node.js", "Firebase", "Tailwind CSS"], highlights: ["Designed and built complete platform from scratch", "Deployed and maintaining live production website", "Implemented translation and dictionary features", "Optimized performance and user experience"], links: { website: "https://meaningby.com/" } },
 ];
 
 const processSteps = [
@@ -67,14 +69,13 @@ const whySumix = [
   { icon: Zap, title: "Rapid Iteration", description: "Agile methodologies with continuous delivery to get value in your hands quickly." },
 ];
 
-// Scroll progress bar component
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary origin-left z-[60]"
+      className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-white/30 to-white/10 origin-left z-[60]"
       style={{ scaleX }}
     />
   );
@@ -86,14 +87,13 @@ export default function Home() {
       <ScrollProgress />
       <ParticleField />
       <Navbar />
-      <Hero />
+      <Hero featuredProject={projects[0]} />
 
-      {/* Short About */}
       <section className="py-24 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0}>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Who We Are</span>
+              <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Who We Are</span>
             </FadeIn>
             <FadeIn delay={0.1}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -109,24 +109,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Three Pillars */}
       <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-[150px]" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/[0.01] rounded-full blur-[150px]" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Core Disciplines</span>
+            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Core Disciplines</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What We Do Best</h2>
             <p className="text-muted max-w-2xl mx-auto">Three core disciplines that drive everything we build.</p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
             {pillars.map((pillar) => (
               <StaggerItem key={pillar.title}>
-                <div className="group p-8 rounded-2xl bg-background border border-border/40 hover:border-primary/30 transition-all duration-500 h-full glow-subtle hover:glow-primary">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center mb-6 group-hover:from-primary/25 group-hover:to-secondary/25 transition-all duration-500">
-                    <pillar.icon className="w-7 h-7 text-primary" />
+                <div className="group p-8 rounded-2xl bg-background border border-border/40 hover:border-white/20 transition-all duration-500 h-full glow-subtle hover:glow-subtle">
+                  <div className="w-14 h-14 rounded-xl bg-white/[0.04] flex items-center justify-center mb-6 group-hover:bg-white/[0.06] transition-all duration-500">
+                    <pillar.icon className="w-7 h-7 text-white/80" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">{pillar.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">{pillar.title}</h3>
                   <p className="text-muted leading-relaxed">{pillar.description}</p>
                 </div>
               </StaggerItem>
@@ -135,11 +134,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-24 sm:py-32 relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Our Services</span>
+            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Our Services</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">End-to-End Digital Solutions</h2>
             <p className="text-muted max-w-2xl mx-auto">From concept to deployment and beyond, we provide comprehensive services to build, launch, and grow your digital products.</p>
           </FadeIn>
@@ -153,15 +151,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured AI Section */}
       <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -translate-y-1/2" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent" />
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[150px] -translate-y-1/2" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0}>
-                <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">AI & Machine Learning</span>
+                <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">AI & Machine Learning</span>
               </FadeIn>
               <FadeIn delay={0.1}>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -177,8 +174,8 @@ export default function Home() {
                 {["Natural Language Processing & Chatbots", "Predictive Analytics & Forecasting", "Computer Vision & Image Recognition", "Process Automation & RPA", "Recommendation Systems"].map((item) => (
                   <StaggerItem key={item}>
                     <div className="flex items-center gap-3 group">
-                      <div className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
-                        <CheckCircle2 className="w-3 h-3 text-primary" />
+                      <div className="w-5 h-5 rounded-full bg-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:bg-white/[0.12] transition-colors">
+                        <CheckCircle2 className="w-3 h-3 text-white/70" />
                       </div>
                       <span className="text-sm text-muted group-hover:text-foreground transition-colors">{item}</span>
                     </div>
@@ -187,43 +184,43 @@ export default function Home() {
               </StaggerContainer>
             </div>
             <ParallaxWrapper speed={0.3} className="flex items-center justify-center">
-              <div className="aspect-square max-w-md w-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent border border-primary/20 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1),transparent_70%)]" />
-                <motion.div 
+              <div className="aspect-square max-w-md w-full rounded-2xl bg-gradient-to-br from-white/[0.03] via-white/[0.01] to-transparent border border-white/10 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,241,234,0.02),transparent_70%)]" />
+                <motion.div
                   className="text-center p-8 relative z-10"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 border border-primary/20">
-                    <Brain className="w-10 h-10 text-primary" />
+                  <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.02] flex items-center justify-center mb-6 border border-white/10">
+                    <Brain className="w-10 h-10 text-white/70" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">AI-Powered Solutions</h3>
                   <p className="text-sm text-muted max-w-sm">Custom machine learning models and intelligent automation tailored to your business needs.</p>
                 </motion.div>
-                <div className="absolute inset-4 rounded-xl border border-primary/10" />
-                <div className="absolute inset-8 rounded-lg border border-secondary/10" />
+                <div className="absolute inset-4 rounded-xl border border-white/5" />
+                <div className="absolute inset-8 rounded-lg border border-white/[0.03]" />
               </div>
             </ParallaxWrapper>
           </div>
         </div>
       </section>
 
-      {/* Projects/Portfolio */}
-      <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative" id="projects">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16">
+      <section className="relative py-24 sm:py-32" id="projects">
+        <div className="absolute inset-0 bg-[#050505]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn className="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Our Work</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Featured Projects</h2>
+              <span className="mb-4 block text-sm font-medium uppercase tracking-[0.18em] text-[#d9d5cf]/80">Our Work</span>
+              <h2 className="text-3xl font-medium tracking-[-0.05em] text-[#f5f1ea] sm:text-4xl lg:text-5xl">Featured Projects</h2>
             </div>
-            <Link href="/projects" className="group inline-flex items-center gap-2 mt-4 sm:mt-0 text-primary hover:text-secondary transition-colors">
+            <Link href="/projects" className="group mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#f5f1ea]/90 transition-colors hover:text-white sm:mt-0">
               View All Projects
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
+          <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
             {projects.map((project) => (
               <StaggerItem key={project.title}>
                 <ProjectCard {...project} />
@@ -233,11 +230,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Development Process */}
       <section className="py-24 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">How We Work</span>
+            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">How We Work</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Our Development Process</h2>
             <p className="text-muted max-w-2xl mx-auto">A proven methodology that ensures transparency, quality, and on-time delivery.</p>
           </FadeIn>
@@ -251,14 +247,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Sumix */}
       <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[150px] -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-white/[0.01] rounded-full blur-[150px] -translate-y-1/2" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0}>
-                <span className="text-sm font-medium text-primary uppercase tracking-wider mb-4 block">Why Sumix</span>
+                <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Why Sumix</span>
               </FadeIn>
               <FadeIn delay={0.1}>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -271,7 +266,7 @@ export default function Home() {
                 </p>
               </FadeIn>
               <FadeIn delay={0.3}>
-                <Link href="/about" className="group inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors">
+                <Link href="/about" className="group inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors">
                   Learn More About Us
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -280,8 +275,8 @@ export default function Home() {
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.12}>
               {whySumix.map((item) => (
                 <StaggerItem key={item.title}>
-                  <div className="p-6 rounded-2xl bg-background border border-border/40 hover:border-primary/30 transition-all duration-500 h-full glow-subtle hover:glow-primary">
-                    <item.icon className="w-8 h-8 text-primary mb-4" />
+                  <div className="p-6 rounded-2xl bg-background border border-border/40 hover:border-white/20 transition-all duration-500 h-full glow-subtle hover:glow-subtle">
+                    <item.icon className="w-8 h-8 text-white/80 mb-4" />
                     <h3 className="text-base font-semibold mb-2">{item.title}</h3>
                     <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                   </div>

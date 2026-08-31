@@ -13,6 +13,13 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      return NextResponse.json(
+        { error: "Contact email is not configured on this server." },
+        { status: 503 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
