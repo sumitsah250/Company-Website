@@ -33,75 +33,68 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "glass-strong border-b border-white/10"
-          : "bg-transparent"
+        scrolled ? "bg-[#050505]/80 backdrop-blur-xl border-b border-[#202020]" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        <div className="flex h-16 items-center justify-between lg:h-20">
+          <Link href="/" className="group flex items-center gap-2.5">
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-[#202020] bg-[#0C0C0C] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group-hover:border-[#292929]">
               <Image src={developersLogo} alt="Sumix Developers logo" fill className="object-cover" />
             </div>
-            <span className="text-sm font-medium tracking-[0.12em] whitespace-nowrap uppercase text-[#f5f1ea]">
+            <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.14em] text-[#F2EFE9]">
               Sumix Developers
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 rounded-lg text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 ${
+                className={`relative rounded-xl px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 ${
                   pathname === link.href
-                    ? "text-[#f5f1ea]"
-                    : "text-[#b6b1aa] hover:text-[#f5f1ea]"
+                    ? "text-[#F2EFE9]"
+                    : "text-[#9B9892] hover:text-[#F2EFE9]"
                 }`}
               >
                 {pathname === link.href && (
-                  <span className="absolute inset-0 rounded-lg bg-white/[0.03] border border-white/10" />
+                  <span className="absolute inset-0 rounded-xl border border-[#202020] bg-[#0C0C0C] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" />
                 )}
                 <span className="relative">{link.label}</span>
               </Link>
             ))}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="group relative px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.02] text-[#f5f1ea] text-[11px] font-medium uppercase tracking-[0.18em] overflow-hidden transition-all duration-300 hover:border-white/25 hover:bg-white/[0.04]"
+              className="group relative inline-flex items-center overflow-hidden rounded-xl border border-[#292929] bg-[#0C0C0C]/80 px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#F2EFE9] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3A3A3A] hover:bg-[#111111]"
             >
               <span className="relative z-10">Start a Project</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-colors"
+            className="rounded-xl border border-[#202020] bg-[#0C0C0C]/80 p-2 text-[#9B9892] transition-colors hover:text-[#F2EFE9] md:hidden"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-border/30 mt-2 glass-strong rounded-b-2xl -mx-4 px-4">
+          <div className="-mx-4 mt-2 rounded-b-2xl border-t border-[#202020] bg-[#050505]/90 px-4 pb-4 md:hidden backdrop-blur-xl">
             <div className="flex flex-col gap-1 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
                     pathname === link.href
-                      ? "text-white bg-white/5 border border-white/15"
-                      : "text-muted hover:text-white hover:bg-white/5"
+                      ? "border border-[#202020] bg-[#0C0C0C] text-[#F2EFE9]"
+                      : "text-[#9B9892] hover:bg-[#0C0C0C] hover:text-[#F2EFE9]"
                   }`}
                 >
                   {link.label}
@@ -109,7 +102,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="mt-2 px-4 py-3 rounded-xl bg-white text-background text-sm font-semibold text-center hover:bg-white/90 transition-colors"
+                className="mt-2 rounded-xl border border-[#292929] bg-[#F2EFE9] px-4 py-3 text-center text-sm font-semibold text-[#050505] transition-transform duration-300 hover:translate-y-[-1px]"
               >
                 Start a Project
               </Link>

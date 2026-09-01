@@ -42,10 +42,10 @@ export default function ProjectCard({ title, category, description, tags, image,
             }}
             className={`card-3d-content ${projectLink ? "cursor-pointer" : ""}`}
           >
-            <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-              <ArrowUpRight className="h-8 w-8 text-[#f5f1ea]/90" />
+            <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border border-[#202020] bg-[#111111]/80 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+              <ArrowUpRight className="h-8 w-8 text-[#F2EFE9]/90" />
             </div>
-            <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#d9d5cf]/80">
+            <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#9B9892]">
               Project Preview
             </span>
           </div>
@@ -54,7 +54,7 @@ export default function ProjectCard({ title, category, description, tags, image,
 
       <div className="relative p-6 card-3d-content">
         <div className="mb-3 flex items-center justify-between">
-          <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#f5f1ea]/80">
+          <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#F2EFE9]/80">
             {category}
           </span>
           {projectLink && (
@@ -64,23 +64,23 @@ export default function ProjectCard({ title, category, description, tags, image,
                 window.open(projectLink, "_blank", "noopener,noreferrer");
               }}
               aria-label={`Open ${title}`}
-              className="inline-flex cursor-pointer text-[#b6b1aa] transition-colors hover:text-white"
+              className="inline-flex cursor-pointer text-[#9B9892] transition-colors hover:text-[#F2EFE9]"
             >
               <ArrowUpRight className="h-4 w-4" />
             </span>
           )}
         </div>
-        <h3 className="mb-2 text-lg font-semibold text-[#f5f1ea] transition-colors duration-300">
+        <h3 className="mb-2 text-lg font-semibold text-[#F2EFE9] transition-colors duration-300">
           {title}
         </h3>
-        <p className="mb-4 text-sm leading-relaxed text-[#b6b1aa]">{description}</p>
-        {stats && <p className="mb-4 text-[11px] uppercase tracking-[0.12em] text-[#f5f1ea]/80">{stats.join("  |  ")}</p>}
-        {highlights && <p className="mb-4 text-xs leading-relaxed text-[#8a867e]">{highlights.join("  |  ")}</p>}
+        <p className="mb-4 text-sm leading-relaxed text-[#9B9892]">{description}</p>
+        {stats && <p className="mb-4 text-[11px] uppercase tracking-[0.12em] text-[#F2EFE9]/80">{stats.join("  |  ")}</p>}
+        {highlights && <p className="mb-4 text-xs leading-relaxed text-[#686662]">{highlights.join("  |  ")}</p>}
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#8a867e]"
+              className="rounded-full border border-[#202020] bg-[#111111] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#9B9892]"
             >
               {tag}
             </span>
@@ -93,7 +93,7 @@ export default function ProjectCard({ title, category, description, tags, image,
   if (!projectLink) {
     return (
       <TiltCard intensity={6} className="h-full">
-        <div className="group relative h-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#090909] transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+        <div className="group relative h-full overflow-hidden rounded-[1.5rem] border border-[#202020] bg-[#0C0C0C] transition-all duration-500 hover:-translate-y-1 hover:border-[#292929]">
           {cardContent}
         </div>
       </TiltCard>
@@ -106,7 +106,7 @@ export default function ProjectCard({ title, category, description, tags, image,
         href={projectLink}
         target="_blank"
         rel="noreferrer noopener"
-        className="group block h-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#090909] transition-all duration-500 hover:-translate-y-1 hover:border-white/20"
+        className="group block h-full overflow-hidden rounded-[1.5rem] border border-[#202020] bg-[#0C0C0C] transition-all duration-500 hover:-translate-y-1 hover:border-[#292929]"
       >
         {cardContent}
       </a>

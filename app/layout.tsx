@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "Firebase app development",
     "premium technology studio",
   ],
+  icons: {
+    icon: "/icon.png",
+  },
   category: "technology",
   classification: "Software Development Services",
   applicationName: "Sumix Developers",
@@ -71,9 +74,7 @@ export const metadata: Metadata = {
     creator: "@sumixdevelopers",
     images: ["/images/meaningby.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -5,8 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #030303;
-  --foreground: #f5f1ea;
+  --background: #050505;
+  --surface: #080808;
+  --surface-elevated: #0C0C0C;
+  --surface-strong: #111111;
+  --border: #202020;
+  --border-strong: #292929;
+  --foreground: #F2EFE9;
+  --muted: #9B9892;
+  --subtle: #686662;
   --mouse-x: 50%;
   --mouse-y: 50%;
 }
@@ -20,10 +27,14 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.012) 18%, transparent 38%),
+    radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.025) 0%, transparent 24%),
+    linear-gradient(180deg, #050505 0%, #050505 100%);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,13 +42,26 @@ body {
   letter-spacing: -0.01em;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+  opacity: 0.45;
+}
+
 ::selection {
-  background: rgba(245, 241, 234, 0.18);
+  background: rgba(242, 239, 233, 0.18);
   color: #ffffff;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -56,28 +80,30 @@ body {
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, rgba(245, 241, 234, 0.96) 0%, rgba(217, 213, 207, 0.8) 55%, rgba(181, 176, 170, 0.72) 100%);
+    background-image: linear-gradient(135deg, rgba(242, 239, 233, 0.98) 0%, rgba(216, 210, 202, 0.92) 48%, rgba(155, 152, 146, 0.8) 100%);
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, rgba(245, 241, 234, 0.96) 0%, rgba(217, 213, 207, 0.8) 50%, rgba(181, 176, 170, 0.72) 100%);
+    background-image: linear-gradient(135deg, rgba(242, 239, 233, 0.98) 0%, rgba(216, 210, 202, 0.9) 56%, rgba(155, 152, 146, 0.72) 100%);
   }
 
   .bg-gradient-radial {
-    background: radial-gradient(ellipse at var(--mouse-x) var(--mouse-y), rgba(245, 241, 234, 0.05) 0%, transparent 55%);
+    background: radial-gradient(ellipse at var(--mouse-x) var(--mouse-y), rgba(242, 239, 233, 0.06) 0%, transparent 55%);
   }
 
   .glass {
-    background: rgba(11, 13, 16, 0.68);
-    backdrop-filter: blur(20px) saturate(1.1);
-    -webkit-backdrop-filter: blur(20px) saturate(1.1);
+    background: rgba(12, 12, 12, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px) saturate(1.15);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
   }
 
   .glass-strong {
-    background: rgba(11, 13, 16, 0.82);
-    backdrop-filter: blur(24px) saturate(1.2);
-    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    background: rgba(10, 10, 10, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
   }
 
   .card-3d {
@@ -86,21 +112,19 @@ body {
   }
 
   .glow-primary {
-    box-shadow: 0 0 50px -15px rgba(245, 241, 234, 0.18),
-                0 0 90px -30px rgba(245, 241, 234, 0.08);
+    box-shadow: 0 0 70px -18px rgba(242, 239, 233, 0.12), 0 20px 40px rgba(0, 0, 0, 0.38);
   }
 
   .glow-secondary {
-    box-shadow: 0 0 50px -15px rgba(217, 213, 207, 0.15),
-                0 0 90px -30px rgba(217, 213, 207, 0.08);
+    box-shadow: 0 0 55px -20px rgba(155, 152, 146, 0.14);
   }
 
   .glow-subtle {
-    box-shadow: 0 0 35px -18px rgba(245, 241, 234, 0.08);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
   }
 
   .glow-gold {
-    box-shadow: 0 0 45px -12px rgba(245, 241, 234, 0.1);
+    box-shadow: 0 0 40px -15px rgba(242, 239, 233, 0.1);
   }
 
   .spotlight {
@@ -112,11 +136,8 @@ body {
   .spotlight::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y), rgba(245, 241, 234, 0.04), transparent 45%);
+    inset: 0;
+    background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y), rgba(242, 239, 233, 0.045), transparent 42%);
     pointer-events: none;
     z-index: 0;
   }
@@ -128,21 +149,21 @@ body {
 
   .mesh-gradient {
     background-color: var(--background);
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(245, 241, 234, 0.08) 0px, transparent 55%),
-      radial-gradient(at 100% 0%, rgba(217, 213, 207, 0.06) 0px, transparent 55%),
-      radial-gradient(at 100% 100%, rgba(245, 241, 234, 0.05) 0px, transparent 55%),
-      radial-gradient(at 0% 100%, rgba(217, 213, 207, 0.04) 0px, transparent 55%);
+    background-image:
+      radial-gradient(at 0% 0%, rgba(242, 239, 233, 0.04) 0px, transparent 58%),
+      radial-gradient(at 100% 0%, rgba(155, 152, 146, 0.04) 0px, transparent 58%),
+      radial-gradient(at 100% 100%, rgba(242, 239, 233, 0.035) 0px, transparent 58%),
+      radial-gradient(at 0% 100%, rgba(155, 152, 146, 0.03) 0px, transparent 58%);
   }
 
   .team-card-shine {
     background: linear-gradient(
       105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.04) 45%,
+      transparent 42%,
+      rgba(255, 255, 255, 0.03) 46%,
       rgba(255, 255, 255, 0.08) 50%,
-      rgba(255, 255, 255, 0.04) 55%,
-      transparent 60%
+      rgba(255, 255, 255, 0.03) 54%,
+      transparent 58%
     );
     background-size: 250% 250%;
     background-position: 200% 0;
