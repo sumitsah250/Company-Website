@@ -33,7 +33,7 @@ export default function Pyramid3D() {
       >
         {/* Pyramid faces */}
         <div 
-          className="absolute w-full h-full bg-gradient-to-b from-white/[0.03] to-transparent border-l border-r border-white/10"
+          className="absolute w-full h-full bg-gradient-to-b from-[#FFFDF8]/90 via-[#F3E9DD]/80 to-[#E7DCCB]/60 border border-[#D8CEC0]/80"
           style={{ 
             transform: "rotateY(0deg) translateZ(60px) rotateX(30deg)",
             transformOrigin: "bottom center",
@@ -41,7 +41,7 @@ export default function Pyramid3D() {
           }}
         />
         <div 
-          className="absolute w-full h-full bg-gradient-to-b from-white/[0.02] to-transparent border-l border-r border-white/10"
+          className="absolute w-full h-full bg-gradient-to-b from-[#FFFDF8]/90 via-[#F3E9DD]/80 to-[#E7DCCB]/60 border border-[#D8CEC0]/80"
           style={{ 
             transform: "rotateY(90deg) translateZ(60px) rotateX(30deg)",
             transformOrigin: "bottom center",
@@ -49,7 +49,7 @@ export default function Pyramid3D() {
           }}
         />
         <div 
-          className="absolute w-full h-full bg-gradient-to-b from-white/[0.02] to-transparent border-l border-r border-white/10"
+          className="absolute w-full h-full bg-gradient-to-b from-[#FFFDF8]/90 via-[#F3E9DD]/80 to-[#E7DCCB]/60 border border-[#D8CEC0]/80"
           style={{ 
             transform: "rotateY(180deg) translateZ(60px) rotateX(30deg)",
             transformOrigin: "bottom center",
@@ -57,7 +57,7 @@ export default function Pyramid3D() {
           }}
         />
         <div 
-          className="absolute w-full h-full bg-gradient-to-b from-white/[0.01] to-transparent border-l border-r border-white/5"
+          className="absolute w-full h-full bg-gradient-to-b from-[#FFFDF8]/85 via-[#F3E9DD]/75 to-[#E7DCCB]/55 border border-[#D8CEC0]/70"
           style={{ 
             transform: "rotateY(270deg) translateZ(60px) rotateX(30deg)",
             transformOrigin: "bottom center",
@@ -67,7 +67,7 @@ export default function Pyramid3D() {
 
         {/* Base */}
         <div 
-          className="absolute w-full h-full bg-white/[0.01] border border-white/5"
+          className="absolute w-full h-full bg-[#F7F3EB]/80 border border-[#D8CEC0]/80"
           style={{ 
             transform: "rotateX(90deg) translateZ(-80px)",
           }}
@@ -75,7 +75,7 @@ export default function Pyramid3D() {
 
         {/* Top glow */}
         <div 
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white/30 blur-sm"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#D8CEC0]/80 blur-sm"
           style={{ transform: "translateZ(80px)" }}
         />
       </div>

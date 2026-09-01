@@ -25,12 +25,12 @@ export default function ProductCube3D() {
   }, []);
 
   const faces = [
-    { transform: "translateZ(50px)", bg: "from-white/[0.04] to-white/[0.02]", label: "AI" },
-    { transform: "rotateY(90deg) translateZ(50px)", bg: "from-white/[0.03] to-white/[0.02]", label: "Cloud" },
-    { transform: "rotateY(180deg) translateZ(50px)", bg: "from-white/[0.04] to-white/[0.03]", label: "Secure" },
-    { transform: "rotateY(-90deg) translateZ(50px)", bg: "from-white/[0.03] to-white/[0.04]", label: "Auto" },
-    { transform: "rotateX(90deg) translateZ(50px)", bg: "from-white/[0.02] to-white/[0.03]", label: "Data" },
-    { transform: "rotateX(-90deg) translateZ(50px)", bg: "from-white/[0.02] to-white/[0.03]", label: "Build" },
+    { transform: "translateZ(50px)", bg: "from-[#F5F0E8] to-[#EDE6DA]", label: "AI" },
+    { transform: "rotateY(90deg) translateZ(50px)", bg: "from-[#F8F4EE] to-[#EAE2D7]", label: "Cloud" },
+    { transform: "rotateY(180deg) translateZ(50px)", bg: "from-[#F3EEE7] to-[#E5DCCF]", label: "Secure" },
+    { transform: "rotateY(-90deg) translateZ(50px)", bg: "from-[#F9F6F1] to-[#E5DCCF]", label: "Auto" },
+    { transform: "rotateX(90deg) translateZ(50px)", bg: "from-[#F7F3EB] to-[#EDE6DA]", label: "Data" },
+    { transform: "rotateX(-90deg) translateZ(50px)", bg: "from-[#F7F3EB] to-[#EDE6DA]", label: "Build" },
   ];
 
   return (
@@ -43,20 +43,20 @@ export default function ProductCube3D() {
         {faces.map((face, i) => (
           <div
             key={i}
-            className={`absolute inset-0 bg-gradient-to-br ${face.bg} border border-white/10 backdrop-blur-sm flex items-center justify-center`}
+            className={`absolute inset-0 bg-gradient-to-br ${face.bg} border border-[#D8CEC0] backdrop-blur-sm flex items-center justify-center`}
             style={{ transform: face.transform }}
           >
-            <span className="text-xs font-bold text-white/50 uppercase tracking-wider">{face.label}</span>
+            <span className="text-xs font-bold text-[#211F1B]/70 uppercase tracking-wider">{face.label}</span>
           </div>
         ))}
 
         {/* Inner core */}
-        <div className="absolute inset-4 bg-white/[0.02] blur-md" style={{ transform: "translateZ(0px)" }} />
+        <div className="absolute inset-4 bg-[#E5DCCF]/50 blur-md" style={{ transform: "translateZ(0px)" }} />
       </div>
 
       {/* Orbiting ring */}
       <div 
-        className="absolute inset-0 rounded-full border border-white/10"
+        className="absolute inset-0 rounded-full border border-[#D8CEC0]"
         style={{ 
           transform: "rotateX(70deg) rotateZ(45deg)",
           animation: "float 8s ease-in-out infinite",

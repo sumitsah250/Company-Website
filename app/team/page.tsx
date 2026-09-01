@@ -55,14 +55,14 @@ function TeamMemberCard({
         className="
           overflow-hidden
           border border-white/10
-          bg-[#0a0a0a]
+          bg-[#0b0c10]
           transition-all duration-700
           hover:border-white/20
           hover:shadow-[0_30px_80px_rgba(0,0,0,0.45)]
         "
       >
         {/* IMAGE FRAME */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050505]">
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#08090c]">
           <Image
             src={member.image}
             alt={member.name}
@@ -114,15 +114,14 @@ function TeamMemberCard({
               flex h-10 w-10
               items-center justify-center
               rounded-full
-              border border-white/10
-              bg-black/50
-              text-white/70
+              border border-white/15
+              bg-black/35
+              text-white/90
               backdrop-blur-md
               transition-all duration-300
               hover:scale-105
-              hover:border-white/20
-              hover:bg-black/70
-              hover:text-white/90
+              hover:border-white/30
+              hover:bg-black/60
             "
           >
             <Globe className="h-4 w-4" />
@@ -168,10 +167,10 @@ function TeamMemberCard({
 
 export default function TeamPage() {
   return (
-    <main className="min-h-screen bg-[#030303] text-white">
+    <main className="min-h-screen bg-[#05070b] text-white">
       <ParticleField />
 
-      <Navbar />
+      <Navbar variant="light" />
 
       {/* HERO */}
       <section className="relative px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-20">
@@ -228,7 +227,7 @@ export default function TeamPage() {
                   font-bold
                   uppercase
                   tracking-[0.34em]
-                  text-white/40
+                  text-zinc-300
                   sm:text-xs
                 "
               >
@@ -254,7 +253,7 @@ export default function TeamPage() {
         className="
           border-t
           border-white/10
-          bg-[#0a0a0a]
+          bg-[#090b0f]
           px-4
           py-20
           sm:px-6
@@ -313,7 +312,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer variant="dark" />
     </main>
   );
 }

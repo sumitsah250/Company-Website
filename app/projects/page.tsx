@@ -44,7 +44,7 @@ function Sumix3DObject() {
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       className="relative flex h-[360px] w-full items-center justify-center perspective-[1400px]"
     >
-      <div className="absolute inset-8 rounded-full bg-white/[0.03] blur-[120px]" />
+      <div className="absolute inset-8 rounded-full bg-[#E5DCCF]/60 blur-[120px]" />
       <div
         className="relative h-[280px] w-[280px] sm:h-[320px] sm:w-[320px]"
         style={{
@@ -53,20 +53,20 @@ function Sumix3DObject() {
           transition: "transform 0.15s ease-out",
         }}
       >
-        <div className="absolute inset-0 rounded-[32px] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_rgba(255,255,255,0.02)_30%,_rgba(3,3,3,0.98)_72%)] shadow-[0_30px_120px_rgba(0,0,0,0.7)]" style={{ transform: "translateZ(55px)" }} />
-        <div className="absolute inset-4 rounded-[28px] border border-white/10 bg-[#0a0a0a]/90" style={{ transform: "translateZ(30px)" }} />
-        <div className="absolute inset-10 rounded-[24px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01)_35%,transparent_70%)]" style={{ transform: "translateZ(80px)" }} />
+        <div className="absolute inset-0 rounded-[32px] border border-[#C8BAA9]/80 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(243,238,231,0.7)_22%,_rgba(33,31,27,0.92)_68%)] shadow-[0_30px_120px_rgba(50,42,33,0.18)]" style={{ transform: "translateZ(55px)" }} />
+        <div className="absolute inset-4 rounded-[28px] border border-[#D8CEC0] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.7),_rgba(247,246,243,0.82)_40%,_rgba(233,227,220,0.9)_100%)]" style={{ transform: "translateZ(30px)" }} />
+        <div className="absolute inset-10 rounded-[24px] border border-[#D8CEC0] bg-[linear-gradient(135deg,rgba(255,255,255,0.4),rgba(255,255,255,0.08)_35%,transparent_70%)]" style={{ transform: "translateZ(80px)" }} />
 
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3" style={{ transform: "translateZ(110px)" }}>
-          <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.02] shadow-[0_15px_35px_rgba(245,241,234,0.08)] sm:h-20 sm:w-20">
+          <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-[#D8CEC0] bg-[#F7F3EB]/90 shadow-[0_15px_35px_rgba(50,42,33,0.12)] sm:h-20 sm:w-20">
             <Image src={developersLogo} alt="Sumix Developers logo" fill className="object-cover" />
           </div>
-          <div className="text-3xl font-black tracking-[-0.08em] text-white sm:text-5xl">SUMIX</div>
+          <div className="text-3xl font-black tracking-[-0.08em] text-[#211F1B] sm:text-5xl">SUMIX</div>
         </div>
 
-        <div className="absolute -left-6 top-10 h-12 w-12 rounded-full border border-white/20 bg-white/[0.03] blur-[2px]" style={{ transform: "translateZ(90px)" }} />
-        <div className="absolute -right-4 bottom-12 h-10 w-10 rounded-full border border-white/15 bg-white/[0.02] blur-[2px]" style={{ transform: "translateZ(90px)" }} />
-        <div className="absolute inset-0 rounded-[32px] border border-white/10" style={{ transform: "rotateX(70deg) translateZ(-60px)" }} />
+        <div className="absolute -left-6 top-10 h-12 w-12 rounded-full border border-[#D8CEC0] bg-[#F7F3EB]/70 blur-[2px]" style={{ transform: "translateZ(90px)" }} />
+        <div className="absolute -right-4 bottom-12 h-10 w-10 rounded-full border border-[#D8CEC0] bg-[#F3EEE7]/80 blur-[2px]" style={{ transform: "translateZ(90px)" }} />
+        <div className="absolute inset-0 rounded-[32px] border border-[#D8CEC0]/80" style={{ transform: "rotateX(70deg) translateZ(-60px)" }} />
       </div>
     </div>
   );
@@ -82,17 +82,17 @@ export default function ProjectsPage() {
       <Navbar />
 
       <section className="relative pb-20 pt-28 sm:pb-24 sm:pt-32">
-        <div className="absolute inset-0 bg-[#050505]" />
-        <div className="absolute right-1/4 top-1/4 h-[400px] w-[400px] rounded-full bg-white/[0.02] blur-[150px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.92),_rgba(247,246,243,0.98)_30%,_rgba(239,234,227,0.94)_100%)]" />
+        <div className="absolute right-1/4 top-1/4 h-[400px] w-[400px] rounded-full bg-[#F8F4EE]/70 blur-[150px]" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <ScrollReveal direction="up" distance={30}>
               <div className="max-w-3xl">
-                <span className="mb-6 block text-sm font-medium uppercase tracking-[0.15em] text-[#d9d5cf]/80">Portfolio</span>
-                <h1 className="mb-8 text-4xl font-medium leading-[1.05] tracking-[-0.05em] text-[#f5f1ea] sm:text-5xl md:text-6xl lg:text-7xl">
+                <span className="mb-6 block text-sm font-medium uppercase tracking-[0.15em] text-[#211F1B]">Portfolio</span>
+                <h1 className="mb-8 text-4xl font-medium leading-[1.05] tracking-[-0.05em] text-[#211F1B] sm:text-5xl md:text-6xl lg:text-7xl">
                   Our<span className="text-gradient"> Latest Work</span>
                 </h1>
-                <p className="text-lg leading-[1.8] text-[#b6b1aa] sm:text-xl">
+                <p className="text-lg leading-[1.8] text-[#211F1B] sm:text-xl">
                   A selection of projects we have built across industries and technologies.
                   Each one represents a unique challenge and a tailored solution.
                 </p>
@@ -106,20 +106,20 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="relative border-y border-white/[0.05] bg-[#070707] py-28 sm:py-36">
-        <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+      <section className="relative border-y border-border/30 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(247,246,243,0.96)_45%,_rgba(235,230,223,0.92)_100%)] py-28 sm:py-36">
+        <div className="absolute inset-x-0 top-0 h-px bg-border/60" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" distance={20}>
             <div className="mb-16 flex flex-wrap items-center gap-3">
-              <Filter className="mr-2 h-4 w-4 text-[#b6b1aa]" />
+              <Filter className="mr-2 h-4 w-4 text-[#211F1B]" />
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 ${
                     activeCategory === category
-                      ? "border-white/15 bg-[#f5f1ea] text-[#050505]"
-                      : "border-white/[0.08] bg-white/[0.02] text-[#b6b1aa] hover:border-white/15 hover:bg-white/[0.04] hover:text-white"
+                      ? "border-[#D8CEC0] bg-[#FFFDF8] text-[#211F1B]"
+                      : "border-[#D8CEC0] bg-[#FFFDF8] text-[#211F1B] hover:border-[#C8BAA9] hover:bg-[#F7F3EB] hover:text-[#211F1B]"
                   }`}
                 >
                   {category}
@@ -138,7 +138,7 @@ export default function ProjectsPage() {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-muted">No projects found in this category.</p>
+              <p className="text-[#211F1B]">No projects found in this category.</p>
             </div>
           )}
         </div>

@@ -30,16 +30,16 @@ export default function ServicesPage() {
       <Navbar />
 
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-28 relative">
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#E9E1D5]/80 rounded-full blur-[150px]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal direction="up" distance={30}>
               <div>
-                <span className="text-sm font-medium text-white/90 uppercase tracking-[0.15em] mb-6 block">Services</span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
+                <span className="text-sm font-medium text-[#211F1B] uppercase tracking-[0.15em] mb-6 block">Services</span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8 text-[#211F1B]">
                   End-to-End<span className="text-gradient"> Digital Solutions</span>
                 </h1>
-                <p className="text-lg sm:text-xl text-muted leading-[1.8]">
+                <p className="text-lg sm:text-xl text-[#211F1B] leading-[1.8]">
                   From strategy and design to development and deployment, we provide comprehensive services to build, launch, and scale your digital products.
                 </p>
               </div>
@@ -53,7 +53,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 bg-surface border-y border-white/[0.04] relative">
+      <section className="py-28 sm:py-36 bg-[#F7F3EB] border-y border-[#D8CEC0]/70 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
@@ -70,27 +70,27 @@ export default function ServicesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal direction="up" distance={20}>
               <div className="text-center mb-20">
-                <span className="text-sm font-medium text-white/90 uppercase tracking-[0.15em] mb-4 block">Capabilities</span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What You Get</h2>
-                <p className="text-muted max-w-2xl mx-auto">Every engagement includes our commitment to quality, transparency, and results.</p>
+                <span className="text-sm font-medium text-[#211F1B] uppercase tracking-[0.15em] mb-4 block">Capabilities</span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-[#211F1B]">What You Get</h2>
+                <p className="text-[#211F1B] max-w-2xl mx-auto">Every engagement includes our commitment to quality, transparency, and results.</p>
               </div>
             </ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, i) => (
                 <ScrollReveal key={service.title} direction="up" distance={25} delay={i * 0.06}>
                   <TiltCard intensity={6}>
-                    <div className="p-8 sm:p-10 rounded-2xl bg-surface-elevated border border-white/[0.06] h-full glow-subtle hover:glow-subtle transition-all duration-700">
+                    <div className="p-8 sm:p-10 rounded-2xl bg-[#FFFDF8] border border-[#D8CEC0] h-full glow-subtle hover:glow-subtle transition-all duration-700">
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-lg bg-white/[0.04] flex items-center justify-center">
-                          <service.icon className="w-5 h-5 text-white/80" />
+                        <div className="w-10 h-10 rounded-lg bg-[#EDE6DA] border border-[#D8CEC0] flex items-center justify-center">
+                          <service.icon className="w-5 h-5 text-[#211F1B]" />
                         </div>
-                        <h3 className="text-lg font-semibold">{service.title}</h3>
+                        <h3 className="text-lg font-semibold text-[#211F1B]">{service.title}</h3>
                       </div>
                       <ul className="space-y-3">
                         {service.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-4 h-4 text-white/70 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-muted">{feature}</span>
+                            <CheckCircle2 className="w-4 h-4 text-[#211F1B] mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-[#211F1B]">{feature}</span>
                           </li>
                         ))}
                       </ul>

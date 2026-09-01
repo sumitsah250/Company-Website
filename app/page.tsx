@@ -93,15 +93,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0}>
-              <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Who We Are</span>
+              <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">Who We Are</span>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-[#211F1B]">
                 Technology Partners for <span className="text-gradient">Ambitious Companies</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-lg text-muted leading-relaxed">
+              <p className="text-lg text-[#211F1B] leading-relaxed">
                 Sumix Developers is a technology company that builds software, AI systems, and digital products for organizations ready to transform their operations and customer experiences.
               </p>
             </FadeIn>
@@ -109,24 +109,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/[0.01] rounded-full blur-[150px]" />
+      <section className="py-24 sm:py-32 bg-[#F7F3EB] border-y border-[#D8CEC0]/70 relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E9E1D5]/80 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F1EAE1]/70 rounded-full blur-[150px]" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Core Disciplines</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What We Do Best</h2>
-            <p className="text-muted max-w-2xl mx-auto">Three core disciplines that drive everything we build.</p>
+            <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">Core Disciplines</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-[#211F1B]">What We Do Best</h2>
+            <p className="text-[#211F1B] max-w-2xl mx-auto">Three core disciplines that drive everything we build.</p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
             {pillars.map((pillar) => (
               <StaggerItem key={pillar.title}>
-                <div className="group p-8 rounded-2xl bg-background border border-border/40 hover:border-white/20 transition-all duration-500 h-full glow-subtle hover:glow-subtle">
-                  <div className="w-14 h-14 rounded-xl bg-white/[0.04] flex items-center justify-center mb-6 group-hover:bg-white/[0.06] transition-all duration-500">
-                    <pillar.icon className="w-7 h-7 text-white/80" />
+                <div className="group p-8 rounded-2xl bg-[#F4EFE6] border border-[#D8CEC0] hover:border-[#C8BAA9] transition-all duration-500 h-full glow-subtle hover:glow-subtle">
+                  <div className="w-14 h-14 rounded-xl bg-[#EDE6DA] flex items-center justify-center mb-6 group-hover:bg-[#E4D9CB] transition-all duration-500">
+                    <pillar.icon className="w-7 h-7 text-[#211F1B]" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">{pillar.title}</h3>
-                  <p className="text-muted leading-relaxed">{pillar.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-[#211F1B] group-hover:text-[#211F1B] transition-colors">{pillar.title}</h3>
+                  <p className="text-[#211F1B] leading-relaxed">{pillar.description}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -137,9 +137,9 @@ export default function Home() {
       <section className="py-24 sm:py-32 relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Our Services</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">End-to-End Digital Solutions</h2>
-            <p className="text-muted max-w-2xl mx-auto">From concept to deployment and beyond, we provide comprehensive services to build, launch, and grow your digital products.</p>
+            <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">Our Services</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-[#211F1B]">End-to-End Digital Solutions</h2>
+            <p className="text-[#211F1B] max-w-2xl mx-auto">From concept to deployment and beyond, we provide comprehensive services to build, launch, and grow your digital products.</p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
             {services.map((service) => (
@@ -152,21 +152,21 @@ export default function Home() {
       </section>
 
       <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent" />
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[150px] -translate-y-1/2" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F1EAE1]/55 to-transparent" />
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#E9E1D5]/75 rounded-full blur-[150px] -translate-y-1/2" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0}>
-                <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">AI & Machine Learning</span>
+                <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">AI & Machine Learning</span>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-[#211F1B]">
                   Intelligence That <span className="text-gradient">Works for You</span>
                 </h2>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <p className="text-muted leading-relaxed mb-8">
+                <p className="text-[#211F1B] leading-relaxed mb-8">
                   We build AI systems that go beyond hype — practical, production-ready solutions that automate workflows, extract insights from data, and create competitive advantages.
                 </p>
               </FadeIn>
@@ -174,31 +174,31 @@ export default function Home() {
                 {["Natural Language Processing & Chatbots", "Predictive Analytics & Forecasting", "Computer Vision & Image Recognition", "Process Automation & RPA", "Recommendation Systems"].map((item) => (
                   <StaggerItem key={item}>
                     <div className="flex items-center gap-3 group">
-                      <div className="w-5 h-5 rounded-full bg-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:bg-white/[0.12] transition-colors">
-                        <CheckCircle2 className="w-3 h-3 text-white/70" />
+                      <div className="w-5 h-5 rounded-full bg-[#F7F3EB] border border-[#D8CEC0] flex items-center justify-center flex-shrink-0 transition-colors">
+                        <CheckCircle2 className="w-3 h-3 text-[#211F1B]" />
                       </div>
-                      <span className="text-sm text-muted group-hover:text-foreground transition-colors">{item}</span>
+                      <span className="text-sm text-[#211F1B] group-hover:text-[#211F1B] transition-colors">{item}</span>
                     </div>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
             </div>
             <ParallaxWrapper speed={0.3} className="flex items-center justify-center">
-              <div className="aspect-square max-w-md w-full rounded-2xl bg-gradient-to-br from-white/[0.03] via-white/[0.01] to-transparent border border-white/10 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,241,234,0.02),transparent_70%)]" />
+              <div className="aspect-square max-w-md w-full rounded-2xl border border-[#D8CEC0] bg-[#FFFDF8] shadow-[0_20px_60px_rgba(33,31,27,0.06)] flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(232,223,212,0.82),transparent_70%)]" />
                 <motion.div
                   className="text-center p-8 relative z-10"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.02] flex items-center justify-center mb-6 border border-white/10">
-                    <Brain className="w-10 h-10 text-white/70" />
+                  <div className="w-20 h-20 mx-auto rounded-2xl bg-[#F4EFE6] flex items-center justify-center mb-6 border border-[#D8CEC0]">
+                    <Brain className="w-10 h-10 text-[#211F1B]" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">AI-Powered Solutions</h3>
-                  <p className="text-sm text-muted max-w-sm">Custom machine learning models and intelligent automation tailored to your business needs.</p>
+                  <h3 className="text-xl font-semibold mb-2 text-[#211F1B]">AI-Powered Solutions</h3>
+                  <p className="text-sm text-[#211F1B] max-w-sm">Custom machine learning models and intelligent automation tailored to your business needs.</p>
                 </motion.div>
-                <div className="absolute inset-4 rounded-xl border border-white/5" />
-                <div className="absolute inset-8 rounded-lg border border-white/[0.03]" />
+                <div className="absolute inset-4 rounded-xl border border-[#D8CEC0]/80" />
+                <div className="absolute inset-8 rounded-lg border border-[#D8CEC0]/60" />
               </div>
             </ParallaxWrapper>
           </div>
@@ -206,16 +206,16 @@ export default function Home() {
       </section>
 
       <section className="relative py-24 sm:py-32" id="projects">
-        <div className="absolute inset-0 bg-[#050505]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.96),_rgba(247,246,243,0.98)_35%,_rgba(239,234,227,0.94)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-border/60" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-border/60" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn className="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="mb-4 block text-sm font-medium uppercase tracking-[0.18em] text-[#d9d5cf]/80">Our Work</span>
-              <h2 className="text-3xl font-medium tracking-[-0.05em] text-[#f5f1ea] sm:text-4xl lg:text-5xl">Featured Projects</h2>
+              <span className="mb-4 block text-sm font-medium uppercase tracking-[0.18em] text-[#211F1B]">Our Work</span>
+              <h2 className="text-3xl font-medium tracking-[-0.05em] text-[#211F1B] sm:text-4xl lg:text-5xl">Featured Projects</h2>
             </div>
-            <Link href="/projects" className="group mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#f5f1ea]/90 transition-colors hover:text-white sm:mt-0">
+            <Link href="/projects" className="group mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#211F1B] transition-colors hover:text-[#211F1B] sm:mt-0">
               View All Projects
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
@@ -233,9 +233,9 @@ export default function Home() {
       <section className="py-24 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-16">
-            <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">How We Work</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Our Development Process</h2>
-            <p className="text-muted max-w-2xl mx-auto">A proven methodology that ensures transparency, quality, and on-time delivery.</p>
+            <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">How We Work</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-[#211F1B]">Our Development Process</h2>
+            <p className="text-[#211F1B] max-w-2xl mx-auto">A proven methodology that ensures transparency, quality, and on-time delivery.</p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4" staggerDelay={0.12}>
             {processSteps.map((step, index) => (
@@ -247,26 +247,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-surface border-y border-border/30 relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-white/[0.01] rounded-full blur-[150px] -translate-y-1/2" />
+      <section className="py-24 sm:py-32 bg-[#F7F3EB] border-y border-[#D8CEC0]/70 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[#F1EAE1]/70 rounded-full blur-[150px] -translate-y-1/2" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0}>
-                <span className="text-sm font-medium text-white/90 uppercase tracking-wider mb-4 block">Why Sumix</span>
+                <span className="text-sm font-medium text-[#211F1B] uppercase tracking-wider mb-4 block">Why Sumix</span>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-[#211F1B]">
                   Built Different.<br /><span className="text-gradient">Built Better.</span>
                 </h2>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <p className="text-muted leading-relaxed mb-8">
+                <p className="text-[#211F1B] leading-relaxed mb-8">
                   We do not cut corners. Every line of code, every design decision, and every strategic recommendation is made with your long-term success in mind.
                 </p>
               </FadeIn>
               <FadeIn delay={0.3}>
-                <Link href="/about" className="group inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors">
+                <Link href="/about" className="group inline-flex items-center gap-2 text-[#211F1B] hover:text-[#211F1B] transition-colors">
                   Learn More About Us
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -275,10 +275,10 @@ export default function Home() {
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.12}>
               {whySumix.map((item) => (
                 <StaggerItem key={item.title}>
-                  <div className="p-6 rounded-2xl bg-background border border-border/40 hover:border-white/20 transition-all duration-500 h-full glow-subtle hover:glow-subtle">
-                    <item.icon className="w-8 h-8 text-white/80 mb-4" />
-                    <h3 className="text-base font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+                  <div className="p-6 rounded-2xl bg-[#F4EFE6] border border-border/40 hover:border-border/60 transition-all duration-500 h-full glow-subtle hover:glow-subtle">
+                    <item.icon className="w-8 h-8 text-[#211F1B] mb-4" />
+                    <h3 className="text-base font-semibold mb-2 text-[#211F1B]">{item.title}</h3>
+                    <p className="text-sm text-[#211F1B] leading-relaxed">{item.description}</p>
                   </div>
                 </StaggerItem>
               ))}

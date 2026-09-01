@@ -75,18 +75,13 @@ export const metadata: Metadata = {
     creator: "@sumixdevelopers",
     images: ["/images/meaningby.png"],
   },
-  
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
-      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-white/[0.18] selection:text-white">
-=======
-      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white">
+      <body className="min-h-screen bg-[#F4EFE6] text-[#211F1B] antialiased selection:bg-[#211F1B]/10 selection:text-[#211F1B]">
         <IntroVideo />
->>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
         {children}
       </body>
     </html>
