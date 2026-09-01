@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import IntroVideo from "@/components/IntroVideo";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sumixdevelopers.com"),
@@ -80,7 +81,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <body className="min-h-screen bg-background text-foreground antialiased selection:bg-white/[0.18] selection:text-white">
+=======
+      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white">
+        <IntroVideo />
+>>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
         {children}
       </body>
     </html>

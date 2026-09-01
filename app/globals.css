@@ -42,6 +42,7 @@ body {
   letter-spacing: -0.01em;
 }
 
+<<<<<<< HEAD
 body::before {
   content: "";
   position: fixed;
@@ -53,6 +54,38 @@ body::before {
   background-size: 84px 84px;
   mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
   opacity: 0.45;
+=======
+.intro-video {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.intro-video--fading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-video__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-video {
+    display: none;
+  }
+>>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
 }
 
 ::selection {

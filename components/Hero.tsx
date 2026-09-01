@@ -1,10 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
+<<<<<<< HEAD
+=======
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useRef } from "react";
+>>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
 import Hero3DShape from "./Hero3DShape";
 import Floating3D from "./Floating3D";
 
+<<<<<<< HEAD
 type HeroProps = {
   featuredProject?: {
     title?: string;
@@ -17,6 +23,55 @@ export default function Hero({ featuredProject }: HeroProps = {}) {
   void featuredProject;
   return (
     <section className="relative h-[100vh] min-h-[720px] overflow-hidden bg-[#050505] text-[#F2EFE9] pt-20">
+=======
+export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const smoothScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 22,
+    mass: 0.5,
+  });
+
+  const visualY = useTransform(smoothScrollProgress, [0, 1], [0, 110]);
+  const visualScale = useTransform(smoothScrollProgress, [0, 1], [1, 1.08]);
+  const visualRotateX = useTransform(smoothScrollProgress, [0, 1], [0, 8]);
+  const visualRotateY = useTransform(smoothScrollProgress, [0, 1], [-12, 10]);
+  const visualX = useTransform(smoothScrollProgress, [0, 1], [0, -18]);
+  const glowOneY = useTransform(smoothScrollProgress, [0, 1], [0, 60]);
+  const glowTwoY = useTransform(smoothScrollProgress, [0, 1], [0, -40]);
+  const glowThreeY = useTransform(smoothScrollProgress, [0, 1], [0, 80]);
+
+  return (
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div 
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[128px]"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          style={prefersReducedMotion ? undefined : { y: glowOneY }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px]"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          style={prefersReducedMotion ? undefined : { y: glowTwoY }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"
+          animate={{ scale: [1, 1.3, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          style={prefersReducedMotion ? undefined : { y: glowThreeY }}
+        />
+      </div>
+
+      {/* Grid Pattern */}
+>>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
       <div
         className="absolute inset-0"
         style={{
@@ -95,6 +150,7 @@ export default function Hero({ featuredProject }: HeroProps = {}) {
             </motion.div>
           </motion.div>
 
+<<<<<<< HEAD
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
@@ -103,6 +159,24 @@ export default function Hero({ featuredProject }: HeroProps = {}) {
           >
             <div className="absolute inset-x-[12%] bottom-[8%] h-[34%] rounded-full bg-[#F2EFE9]/[0.05] blur-[92px]" />
             <Floating3D speed={0.9} amplitude={16} className="relative z-10">
+=======
+          {/* Right - 3D Visual */}
+          <motion.div 
+            className="hidden lg:flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={prefersReducedMotion ? undefined : {
+              y: visualY,
+              x: visualX,
+              scale: visualScale,
+              rotateX: visualRotateX,
+              rotateY: visualRotateY,
+              transformPerspective: 1400,
+            }}
+          >
+            <Floating3D speed={0.7} amplitude={8}>
+>>>>>>> 14a424c917ebe30c379a20e2ad540b33d7b817f5
               <Hero3DShape />
             </Floating3D>
           </motion.div>
